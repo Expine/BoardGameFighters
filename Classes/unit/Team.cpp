@@ -5,3 +5,9 @@ bool Team::init()
 	return true;
 }
 
+/******************************************** TeamManager ********************************************/
+
+
+void TeamManager::loadTeamData()
+{
+}

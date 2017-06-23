@@ -242,13 +242,11 @@ namespace simple {
 	 * Get event listener with swallow and set node
 	 * @param target Node where event listener set
 	 */
-	inline EventListenerTouchOneByOne* setEventListener(Node* target)
+	inline EventListenerTouchOneByOne* setEventListener(Node* target, boolean swallow = true, boolean isAlways = false)
 	{
 		auto lis = EventListenerTouchOneByOne::create();
-		lis->setSwallowTouches(true);
-		lis->onTouchBegan = [](Touch* touch, Event* event) {
-			return util::isTouchInEvent(touch, event);
-		};
+		lis->setSwallowTouches(swallow);
+		lis->onTouchBegan = [isAlways](Touch* touch, Event* event) { return isAlways || util::isTouchInEvent(touch, event); };
 		target->getEventDispatcher()->addEventListenerWithSceneGraphPriority(lis, target);
 		return lis;
 	};
@@ -257,11 +255,11 @@ namespace simple {
 	 * Get single listener with swallow and set node
 	 * @param target Node where single listener set
 	 */
-	inline SingleTouchListener* setSingleListener(Node* target)
+	inline SingleTouchListener* setSingleListener(Node* target, boolean swallow = true, boolean isAlways = false)
 	{
 		auto lis = SingleTouchListener::create();
-		lis->setSwallowTouches(true);
-		lis->onTouchBeganChecking = [](Vec2 pos, Node* t) { return util::isTouchInEvent(pos, t); };
+		lis->setSwallowTouches(swallow);
+		lis->onTouchBeganChecking = [isAlways](Vec2 pos, Node* t) { return isAlways || util::isTouchInEvent(pos, t); };
 		target->getEventDispatcher()->addEventListenerWithSceneGraphPriority(lis, target);
 		return lis;
 	};
@@ -276,8 +274,6 @@ namespace simple {
 		target->getEventDispatcher()->addEventListenerWithSceneGraphPriority(lis, target);
 		return lis;
 	};
-
-
 	
 	/*
 	 * Get sprite and set position
@@ -312,6 +308,24 @@ namespace simple {
 		skin->setAnchorPoint(anchor);
 		skin->setPosition(x, y);
 		return skin;
+	}
+
+	/*
+	 * Create label simply
+	 * @param text Label text
+	 * @param x Label x position
+	 * @param y Label y position
+	 * @param size Label font size
+	 * @param color Label font color
+	 * @param anchor Label anchor position
+	 * @param font Label font name
+	 */
+	inline Label* getLabel(const std::string text, int x, int y, float size, Color3B color = Color3B::WHITE, Vec2 anchor = Vec2::ANCHOR_BOTTOM_LEFT, std::string font = "MS ゴシック") {
+		auto label = Label::createWithSystemFont(text, font, size);
+		label->setPosition(x, y);
+		label->setAnchorPoint(anchor);
+		label->setColor(color);
+		return label;
 	}
 
 }

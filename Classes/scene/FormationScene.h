@@ -6,10 +6,20 @@
 class Formation : public cocos2d::Layer
 {
 private:
+	cocos2d::Sprite* _pp_sp;
+	std::vector<cocos2d::Label*> _team_label;
+private:
 	/*
 	 * Popup unit by long tap
 	 */
 	void popupUnit();
+protected:
+	Formation() : _pp_sp(nullptr)
+	{};
+	~Formation() 
+	{
+		_pp_sp = nullptr;
+	};
 public:
     CREATE_FUNC(Formation);
 	/*
