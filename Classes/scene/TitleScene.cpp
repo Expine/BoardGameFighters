@@ -1,7 +1,11 @@
 #include "TitleScene.h"
 
+#include "scene/GameScene.h"
+#include "scene/FormationScene.h"
 #include "system/Util.h"
 #include "system/MultiListener.h"
+
+#include "unit/Unit.h"
 
 USING_NS_CC;
 
@@ -20,7 +24,15 @@ bool Title::init()
     if ( !Layer::init() )
         return false;
 
-	auto next = EventListenerTouchOneByOne::create();
-        
+	this->addChild(simple::getSprite("res/system/title.png", 225, 400));
+
+	auto lis = simple::setEventListener(this);
+	lis->onTouchBegan = [] (Touch* touch, Event* event){
+		Director::getInstance()->replaceScene(Formation::createScene());
+		return true;
+	};
+
+	UnitManager::getInstance()->loadUnitData();
+		
     return true;
 }

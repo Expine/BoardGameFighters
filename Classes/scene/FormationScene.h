@@ -5,6 +5,11 @@
 
 class Formation : public cocos2d::Layer
 {
+private:
+	/*
+	 * Popup unit by long tap
+	 */
+	void popupUnit();
 public:
     CREATE_FUNC(Formation);
 	/*
