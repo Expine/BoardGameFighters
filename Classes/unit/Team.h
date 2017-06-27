@@ -10,6 +10,9 @@ constexpr int MAX_TEAM_NUMBER = 5;
 // maximum number of team member
 constexpr int MAX_MEMVER_NUMBER = 100;
 
+// maximum cost
+constexpr int TEAM_MAX_COST = 100;
+
 class Team : public cocos2d::Ref
 {
 public:
@@ -21,6 +24,10 @@ protected:
 	bool init();
 public:
 	CREATE_FUNC(Team);
+	/*
+	 * Get summation of cost of units
+	 */
+	int getAllCost();
 };
 
 class TeamManager {

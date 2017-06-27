@@ -39,13 +39,15 @@ void UnitManager::loadUnitData()
 			continue;
 
 		auto unit = Unit::create();
-		unit->setFileName(data[0]);
-		unit->setName(data[1]);
-		unit->setMoveType(type_map[data[2]]);
-		unit->setMove(convertMovable(data[3]));
-		unit->setHP(atoi(data[4].c_str()));
-		unit->setAttack(atoi(data[5].c_str()));
-		for (unsigned int i = 6; i < data.size(); i++)
+		unit->setIconFileName(data[0]);
+		unit->setStandFileName(data[1]);
+		unit->setName(data[2]);
+		unit->setCost(atoi(data[3].c_str()));
+		unit->setMoveType(type_map[data[4]]);
+		unit->setMove(convertMovable(data[5]));
+		unit->setHP(atoi(data[6].c_str()));
+		unit->setAttack(atoi(data[7].c_str()));
+		for (unsigned int i = 8; i < data.size(); i++)
 			unit->skills.push_back(data[i]);
 		_units.pushBack(unit);
 	}

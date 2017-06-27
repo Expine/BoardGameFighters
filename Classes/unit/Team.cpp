@@ -1,8 +1,18 @@
 #include "Team.h"
 
+#include "Unit.h"
+
 bool Team::init()
 {
 	return true;
+}
+
+int Team::getAllCost()
+{
+	auto result = 0;
+	for (auto unit : _units)
+		result += unit->getCost();
+	return result;
 }
 
 /******************************************** TeamManager ********************************************/

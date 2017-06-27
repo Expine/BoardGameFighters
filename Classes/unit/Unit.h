@@ -22,9 +22,11 @@ public:
 
 
 	CREATE_FUNC(Unit);
-	CC_SYNTHESIZE(std::string, _fileName, FileName);
+	CC_SYNTHESIZE(std::string, _iconFileName, IconFileName);
+	CC_SYNTHESIZE(std::string, _standFileName, StandFileName);
 	CC_SYNTHESIZE(std::string, _name, Name);
 	CC_SYNTHESIZE(MoveType, _move_type, MoveType);
+	CC_SYNTHESIZE(int, _cost, Cost);
 	// amount of movement
 	CC_SYNTHESIZE(int, _move, Move);
 	CC_SYNTHESIZE(int, _hp, HP);
