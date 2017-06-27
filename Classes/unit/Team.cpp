@@ -10,4 +10,6 @@ bool Team::init()
 
 void TeamManager::loadTeamData()
 {
+	for(auto i = 0; i < MAX_TEAM_NUMBER; i++)
+		_teams.pushBack(Team::create());
 }

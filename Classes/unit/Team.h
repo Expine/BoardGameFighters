@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 
+class Unit;
+
 // maximum number of teams
 constexpr int MAX_TEAM_NUMBER = 5;
 // maximum number of team member
@@ -10,6 +12,8 @@ constexpr int MAX_MEMVER_NUMBER = 100;
 
 class Team : public cocos2d::Ref
 {
+public:
+	std::vector<Unit*> _units;
 protected:
 	/*
 	 * Initialization

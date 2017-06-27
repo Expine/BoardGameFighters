@@ -156,6 +156,24 @@ namespace util
 	};
 
 	/*
+ 	 * Find element satisfying condition in vec and get its index number
+	 * If vec has element satisfying condition, return its index number else, return -1
+	 * @param vec Vector to be searched
+	 * @param element Searching element
+	 * @param cond Judgement condition. if cond(x, element)(x in vec) is true, return true
+	 */
+	template<typename V, typename T>
+	int findIndex(const std::vector<V>& vec, T element, std::function<bool(V, T)> cond = [] (V a, T b) { return a == b; })
+	{
+		for (unsigned int i = 0; i < vec.size(); ++i) 
+		{
+			if (cond(vec[i], element))
+				return i;
+		}
+		return -1;
+	};
+
+	/*
  	 * Find element satisfying condition in vec
 	 * If vec has element satisfying condition, return it
 	 * If not, return nullptr

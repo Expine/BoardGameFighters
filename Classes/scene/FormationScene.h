@@ -3,22 +3,42 @@
 
 #include "cocos2d.h"
 
+class Team;
+class Unit;
+
 class Formation : public cocos2d::Layer
 {
 private:
+	Team* _now_team;
+	Unit* _now_unit;
 	cocos2d::Sprite* _pp_sp;
+	cocos2d::Node* _pre_skin;
+	cocos2d::Node* _post_skin;
 	std::vector<cocos2d::Label*> _team_label;
 private:
 	/*
-	 * Popup unit by long tap
+	 * Set team sprite by team data
+	 * @param team Team data
 	 */
-	void popupUnit();
+	void setTeam(Team* team);
+
+	/*
+	 * Show unit sprite
+	 * @param base Base node where sprite put
+	 * @param unit Unit showed for sprite
+	 * @param x Sprite x position
+	 * @param y Sprite y position
+	 */
+	void showUnit(Node* base, Unit* unit, int x, int y);
 protected:
-	Formation() : _pp_sp(nullptr)
+	Formation() : _now_team(nullptr), _now_unit(nullptr), _pp_sp(nullptr), _pre_skin(nullptr), _post_skin(nullptr)
 	{};
 	~Formation() 
 	{
+		_now_team = nullptr;
+		_now_unit = nullptr;
 		_pp_sp = nullptr;
+		_pre_skin = _post_skin = nullptr;
 	};
 public:
     CREATE_FUNC(Formation);

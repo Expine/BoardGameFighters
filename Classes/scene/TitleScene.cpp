@@ -6,6 +6,7 @@
 #include "system/MultiListener.h"
 
 #include "unit/Unit.h"
+#include "unit/Team.h"
 
 USING_NS_CC;
 
@@ -33,6 +34,7 @@ bool Title::init()
 	};
 
 	UnitManager::getInstance()->loadUnitData();
+	TeamManager::getInstance()->loadTeamData();
 		
     return true;
 }
