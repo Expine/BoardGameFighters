@@ -28,6 +28,24 @@ public:
 	 * Get summation of cost of units
 	 */
 	int getAllCost();
+
+	/*
+	 * Save team data
+	 * @param no Team number
+	 */
+	void saveTeamData(int no);
+
+	/*
+	 * Load team data
+	 * Clear unit data and reload unit data by userdefault
+	 * @param no Team number
+	 */
+	void loadTeamData(int no);
+
+	/*
+	 * This instance to string data.
+	 */
+	std::string toString();
 };
 
 class TeamManager {
@@ -41,10 +59,27 @@ public:
 	 * Get instance for singleton
 	 */
 	static TeamManager* getInstance() { static TeamManager instance; return &instance; };
+
 	/*
-	 * Load unit data by reading file
+	 * Save all team data
 	 */
-	void loadTeamData();
+	void saveAllTeamData()
+	{
+		for (unsigned int i = 0; i < _teams.size(); ++i)
+			_teams.at(i)->saveTeamData(i);
+	};
+
+	/*
+	 * Load all team data
+	 */
+	void loadAllTeamData()
+	{
+		if (_teams.size() == 0)
+			for (int i = 0; i < MAX_TEAM_NUMBER; ++i)
+				_teams.pushBack(Team::create());
+		for (unsigned int i = 0; i < _teams.size(); ++i)
+			_teams.at(i)->loadTeamData(i);
+	};
 };
 
 

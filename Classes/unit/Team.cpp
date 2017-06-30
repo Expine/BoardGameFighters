@@ -1,6 +1,9 @@
 #include "Team.h"
 
 #include "Unit.h"
+#include "system/Util.h"
+
+USING_NS_CC;
 
 bool Team::init()
 {
@@ -15,11 +18,32 @@ int Team::getAllCost()
 	return result;
 }
 
-/******************************************** TeamManager ********************************************/
-
-
-void TeamManager::loadTeamData()
+void Team::saveTeamData(int no)
 {
-	for(auto i = 0; i < MAX_TEAM_NUMBER; i++)
-		_teams.pushBack(Team::create());
+	auto userDef = UserDefault::getInstance();
+	userDef->setStringForKey(StringUtils::format("team_%d", no).c_str(), toString());
+	userDef->flush();
 }
+
+void Team::loadTeamData(int no)
+{
+	_units.clear();
+	auto userDef = UserDefault::getInstance();
+	auto data = userDef->getStringForKey(StringUtils::format("team_%d", no).c_str());
+	for (auto it : util::splitString(data, ','))
+	{
+		if (it.length() > 0)
+		{
+			auto unit = UnitManager::getInstance()->unparseUnit(it);
+			if (unit)
+				_units.push_back(unit);
+		}
+	}
+}
+
+std::string Team::toString()
+{
+	return util::reduceLeft<Unit*, std::string>(_units, "", [](std::string s, Unit* u) { return s + u->toString() + ","; });
+}
+
+/******************************************** TeamManager ********************************************/

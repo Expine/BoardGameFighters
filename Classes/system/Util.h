@@ -225,6 +225,16 @@ namespace util
 		return arr;
 	};
 
+	template<typename V, typename S>
+	S reduceLeft(const std::vector<V> & vec, S init, std::function<S(S, V)> func)
+	{
+		S res = init;
+		for (auto item : vec)
+			res = func(res, item);
+		return res;
+	}
+
+
 	/*
 	 * Initialize random seed
 	 */

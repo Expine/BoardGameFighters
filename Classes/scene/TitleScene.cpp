@@ -34,7 +34,7 @@ bool Title::init()
 	};
 
 	UnitManager::getInstance()->loadUnitData();
-	TeamManager::getInstance()->loadTeamData();
+	TeamManager::getInstance()->loadAllTeamData();
 		
     return true;
 }

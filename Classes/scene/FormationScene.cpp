@@ -46,23 +46,16 @@ bool Formation::init()
 	}
 	setTeam(TeamManager::getInstance()->_teams.at(0));
 
-	//////////////////////////////
-	// 3. set listener
-
-	// set move listener
-	auto above = Node::create();
-	this->addChild(above, 100);
-	auto move = simple::setEventListener(above, false, true);
-	move->onTouchMoved = [this](Touch* t, Event* e) {
-		if (_pp_sp)
-			_pp_sp->setPosition(t->getLocation());
-	};
-	auto remove = simple::setEventListener(this, false, true);
-	remove->onTouchBegan = [this](Touch* t, Event* e) {
-		setNowUnit(nullptr);
-		return true;
+	// set command
+	auto save = simple::getLabel("Save", 75, 580, 20, Color3B::WHITE, Vec2::ANCHOR_MIDDLE_TOP);
+	_side_skin->addChild(save);
+	auto lsn = simple::setEventListener(save);
+	lsn->onTouchEnded= [this](Touch* t, Event* e) {
+		TeamManager::getInstance()->loadAllTeamData();
 	};
 
+
+	// show unit
 	auto sx = 40;
 	auto x = sx;
 	auto y = 50;
@@ -78,6 +71,24 @@ bool Formation::init()
 			y += dy;
 		}
 	}
+
+	//////////////////////////////
+	// 3. set listener
+
+	// set move listener
+	auto above = Node::create();
+	this->addChild(above, 100);
+	auto move = simple::setEventListener(above, false, true);
+	move->onTouchMoved = [this](Touch* t, Event* e) {
+		if (_pp_sp)
+			_pp_sp->setPosition(t->getLocation());
+	};
+	// set remove listener
+	auto remove = simple::setEventListener(this, false, true);
+	remove->onTouchBegan = [this](Touch* t, Event* e) {
+		setNowUnit(nullptr);
+		return true;
+	};
 
 	for (auto label : _team_label) {
 		// set listener

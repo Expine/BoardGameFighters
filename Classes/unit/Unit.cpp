@@ -52,3 +52,11 @@ void UnitManager::loadUnitData()
 		_units.pushBack(unit);
 	}
 }
+
+Unit * UnitManager::unparseUnit(std::string data)
+{
+	for (auto unit : _units)
+		if (unit->toString() == data)
+			return unit;
+	return nullptr;
+}

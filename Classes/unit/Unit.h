@@ -33,6 +33,11 @@ public:
 	CC_SYNTHESIZE(int, _attack, Attack);
 	// list of skill
 	std::vector<std::string> skills;
+
+	/*
+	 * This instance to string data.
+	 */
+	inline std::string toString() { return _name; };
 };
 
 class UnitManager {
@@ -50,6 +55,13 @@ public:
 	 * Load unit data by reading file
 	 */
 	void loadUnitData();
+
+	/*
+	 * Unparse unit by string
+	 * If not exists, return nullptr
+	 * @param data Unit string data
+	 */
+	Unit* unparseUnit(std::string data);
 };
 
 #endif // __UNIT_H__
