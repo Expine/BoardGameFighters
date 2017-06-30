@@ -32,10 +32,12 @@ bool Formation::init()
 	this->addChild(_team_skin);
 	_side_skin = simple::createCutSkinSimply("res/system/window_2.png", 75, 500, 150, 600, 0);
 	this->addChild(_side_skin);
-	_pre_skin = simple::createCutSkinSimply("res/system/window_1.png", 300, 200, 300, 400, 0);
+	_pre_skin = simple::createCutSkinSimply("res/system/window_1.png", 300, 190, 300, 380, 0);
 	this->addChild(_pre_skin);
-	_post_skin = simple::createCutSkinSimply("res/system/window_1.png", 300, 600, 300, 400, 0);
+	_post_skin = simple::createCutSkinSimply("res/system/window_1.png", 300, 590, 300, 380, 0);
 	this->addChild(_post_skin);
+	auto command_skin = simple::createCutSkinSimply("res/system/window_1.png", 300, 400, 300, 40, util::CUT_MASK_LEFT | util::CUT_MASK_RIGHT);
+	this->addChild(command_skin);
 
 	// set team
 	for (auto i = 0; i < MAX_TEAM_NUMBER; ++i) {
@@ -47,13 +49,10 @@ bool Formation::init()
 	setTeam(TeamManager::getInstance()->_teams.at(0));
 
 	// set command
-	auto save = simple::getLabel("Save", 75, 580, 20, Color3B::WHITE, Vec2::ANCHOR_MIDDLE_TOP);
-	_side_skin->addChild(save);
-	auto lsn = simple::setEventListener(save);
-	lsn->onTouchEnded= [this](Touch* t, Event* e) {
-		TeamManager::getInstance()->loadAllTeamData();
-	};
-
+	auto save = simple::getLabel("Save", 100, 40, 20, Color3B::WHITE, Vec2::ANCHOR_MIDDLE);
+	command_skin->addChild(save);
+	auto end = simple::getLabel("End", 200, 40, 20, Color3B::WHITE, Vec2::ANCHOR_MIDDLE);
+	command_skin->addChild(end);
 
 	// show unit
 	auto sx = 40;
@@ -90,6 +89,7 @@ bool Formation::init()
 		return true;
 	};
 
+	// enable to change team numer
 	for (auto label : _team_label) {
 		// set listener
 		auto t_lis = simple::setSingleListener(label);
@@ -102,6 +102,16 @@ bool Formation::init()
 			setTeam(TeamManager::getInstance()->_teams.at(util::findIndex(_team_label, label)));
 		};
 	}
+
+	// set save and end listener
+	auto sl = simple::setSingleListener(save);
+	sl->onTap = [](Vec2 pos, Node* t) {
+		TeamManager::getInstance()->saveAllTeamData();
+	};
+	auto el = simple::setSingleListener(end);
+	el->onTap = [](Vec2 pos, Node* t) {
+		Director::getInstance()->popScene();
+	};
 
 	return true;
 }

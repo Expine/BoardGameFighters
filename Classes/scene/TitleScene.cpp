@@ -29,7 +29,8 @@ bool Title::init()
 
 	auto lis = simple::setEventListener(this);
 	lis->onTouchBegan = [] (Touch* touch, Event* event){
-		Director::getInstance()->replaceScene(Formation::createScene());
+//		Director::getInstance()->replaceScene(Formation::createScene());
+		Director::getInstance()->pushScene(Formation::createScene());
 		return true;
 	};
 
