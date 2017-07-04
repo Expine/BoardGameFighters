@@ -309,14 +309,16 @@ namespace simple {
 	 * @param x Sprite x position
 	 * @param y Sprite y position
 	 * @param scale Sprite scale
+	 * @param anchor Sprite anchor point
 	 */
-	inline Sprite* getSprite(std::string fileName, float x, float y, float scale = 1.0f, int opacity = 255) 
+	inline Sprite* getSprite(std::string fileName, float x, float y, float scale = 1.0f, int opacity = 255, Vec2 anchor = Vec2::ANCHOR_MIDDLE) 
 	{
 		auto sp = Sprite::create(fileName);
 		sp->setPosition(x, y);
 		sp->setOpacity(opacity);
 		if(scale != 1.0f)
 			sp->setScale(scale);
+		sp->setAnchorPoint(anchor);
 		return sp;
 	}
 
