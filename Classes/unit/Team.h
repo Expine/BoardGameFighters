@@ -13,10 +13,15 @@ constexpr int MAX_MEMVER_NUMBER = 100;
 // maximum cost
 constexpr int TEAM_MAX_COST = 100;
 
+/**
+ * Team composed of units
+ * 
+ */
 class Team : public cocos2d::Ref
 {
 public:
 	std::vector<Unit*> _units;
+
 protected:
 	/*
 	 * Initialization
@@ -48,17 +53,17 @@ public:
 	std::string toString();
 };
 
+/**
+ * Singleton for managing team
+ */
 class TeamManager {
+	// protected for singleton
 protected:
 	TeamManager() {};
 	~TeamManager() {};
 public:
+	/** List of team */
 	cocos2d::Vector<Team*> _teams;
-
-	/*
-	 * Get instance for singleton
-	 */
-	static TeamManager* getInstance() { static TeamManager instance; return &instance; };
 
 	/*
 	 * Save all team data
@@ -74,11 +79,23 @@ public:
 	 */
 	void loadAllTeamData()
 	{
+		// Set team instance
 		if (_teams.size() == 0)
 			for (int i = 0; i < MAX_TEAM_NUMBER; ++i)
 				_teams.pushBack(Team::create());
+		// Load team
 		for (unsigned int i = 0; i < _teams.size(); ++i)
 			_teams.at(i)->loadTeamData(i);
+	};
+
+	/*
+	 * Get instance for singleton
+	 * With loading all team data
+	 */
+	static TeamManager* getInstance() { 
+		static TeamManager instance; 
+		instance.loadAllTeamData();
+		return &instance; 
 	};
 };
 

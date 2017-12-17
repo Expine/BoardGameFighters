@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 
+constexpr int TITLE_MENU_NUMBER = 5;
+
 class Title : public cocos2d::Layer
 {
 public:

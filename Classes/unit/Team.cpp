@@ -28,17 +28,14 @@ void Team::saveTeamData(int no)
 void Team::loadTeamData(int no)
 {
 	_units.clear();
-	auto userDef = UserDefault::getInstance();
-	auto data = userDef->getStringForKey(StringUtils::format("team_%d", no).c_str());
+
+	Unit* unit;
+	auto data = UserDefault::getInstance()->getStringForKey(StringUtils::format("team_%d", no).c_str());
+	// Load data as csv
 	for (auto it : util::splitString(data, ','))
-	{
-		if (it.length() > 0)
-		{
-			auto unit = UnitManager::getInstance()->unparseUnit(it);
-			if (unit)
-				_units.push_back(unit);
-		}
-	}
+		// Check unit name is enable
+		if (it.length() > 0 && (unit = UnitManager::getInstance()->unparseUnit(it)))
+			_units.push_back(unit);
 }
 
 std::string Team::toString()

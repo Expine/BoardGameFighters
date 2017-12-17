@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene">
+      <UniqueIdentifier>{ad77ff7b-4ffe-4d0f-a75a-04c9368ee5b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\stage">
+      <UniqueIdentifier>{0ec715ae-ba98-4068-8a81-bc8463da708a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\unit">
+      <UniqueIdentifier>{22bfa372-a79e-4eb5-9ef1-3c8ea9f4f24a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\system">
+      <UniqueIdentifier>{1ebdd3a5-fc45-4690-9349-e5700f2df825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\story">
+      <UniqueIdentifier>{63b58739-4b26-4ed8-a855-dbc7b1fb588d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\FormationScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\GameScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\InstallScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\ResultScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\StoryScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TitleScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\WaitScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\stage\Stage.cpp">
+      <Filter>src\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\stage\Tile.cpp">
+      <Filter>src\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\system\DataManager.cpp">
+      <Filter>src\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\Team.cpp">
+      <Filter>src\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\Unit.cpp">
+      <Filter>src\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\story\Event.cpp">
+      <Filter>src\story</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\story\StoryData.cpp">
+      <Filter>src\story</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\system\Util.cpp">
+      <Filter>src\system</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\FormationScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\GameScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\InstallScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\ResultScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\StoryScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TitleScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\WaitScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\stage\Stage.h">
+      <Filter>src\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\stage\Tile.h">
+      <Filter>src\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\system\DataManager.h">
+      <Filter>src\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unit\Team.h">
+      <Filter>src\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unit\Unit.h">
+      <Filter>src\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\story\Event.h">
+      <Filter>src\story</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\story\StoryData.h">
+      <Filter>src\story</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\system\Util.h">
+      <Filter>src\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\system\MultiListener.h">
+      <Filter>src\system</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
